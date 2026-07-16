@@ -3,23 +3,427 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Atieh Barati Nia — Ph.D. student and researcher in graph algorithms, high-performance computing, and efficient software at NJIT." />
+  <meta name="description" content="Atieh Barati Nia — Ph.D. student in Data Science at NJIT researching scalable graph algorithms, parallel triangle counting, dynamic graph analytics, and efficient software." />
   <meta name="author" content="Atieh Barati Nia" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="theme-color" content="#08111f" />
 
-  <meta property="og:title" content="Atieh Barati Nia — Graph Algorithms & HPC" />
+  <meta property="og:title" content="Atieh Barati Nia — Graph Algorithms Researcher" />
   <meta property="og:description" content="Research website of Atieh Barati Nia, a Data Science Ph.D. student at NJIT." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atiehbaratinia.github.io/" />
   <meta property="og:image" content="https://atiehbaratinia.github.io/profile.jpg" />
 
-  <title>Atieh Barati Nia | Researcher</title>
+  <title>Atieh Barati Nia | Graph Algorithms Researcher</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #0d1929;
+      --panel: rgba(17, 31, 49, 0.82);
+      --panel-solid: #101e30;
+      --text: #eef5ff;
+      --muted: #9fb0c4;
+      --line: #22354d;
+      --accent: #63e6c5;
+      --accent-2: #69a7ff;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      --radius: 16px;
+      --shell: 1120px;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f7fafc;
+      --bg-soft: #eef4f8;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-solid: #ffffff;
+      --text: #122033;
+      --muted: #536579;
+      --line: #d8e2eb;
+      --accent: #0f9f82;
+      --accent-2: #336fd1;
+      --shadow: 0 16px 40px rgba(33, 51, 72, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 16% 2%, rgba(99, 230, 197, 0.08), transparent 28%),
+        radial-gradient(circle at 86% 12%, rgba(105, 167, 255, 0.07), transparent 26%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .shell { width: min(calc(100% - 40px), var(--shell)); margin: 0 auto; }
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: 16px; top: 16px; z-index: 100; background: var(--accent); color: #071219; padding: 8px 12px; border-radius: 8px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark { width: 24px; height: 24px; color: var(--accent); }
+    .brand-mark svg { width: 100%; height: 100%; fill: currentColor; stroke: currentColor; stroke-width: 1.6; }
+    .brand-mark path { fill: none; }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .theme-toggle,
+    .nav-toggle {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      margin-left: 2px;
+    }
+
+    .theme-toggle svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .moon { display: none; }
+    html[data-theme="light"] .sun { display: none; }
+    html[data-theme="light"] .moon { display: block; }
+    .nav-toggle { display: none; width: 36px; height: 36px; padding: 0 9px; }
+    .nav-toggle span { display: block; height: 1px; background: currentColor; margin: 5px 0; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .hero::before { width: 280px; height: 280px; right: 7%; top: 7%; border: 1px solid rgba(99, 230, 197, 0.12); }
+    .hero::after { width: 190px; height: 190px; right: 13%; top: 17%; border: 1px solid rgba(105, 167, 255, 0.12); }
+
+    .hero-grid {
+      min-height: 500px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.62fr);
+      gap: 64px;
+      align-items: center;
+      padding: 58px 0 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow,
+    .section-label {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      max-width: 700px;
+    }
+
+    .hero-title {
+      margin-bottom: 12px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: clamp(1rem, 1.8vw, 1.14rem);
+    }
+
+    .hero-summary {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 21px;
+    }
+
+    .hero-actions,
+    .contact-links,
+    .project-links,
+    .email-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 15px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .button-primary { background: var(--accent); color: #071219; }
+    .button-secondary { border-color: var(--line); background: var(--panel); }
+    .text-link { color: var(--muted); text-underline-offset: 4px; font-size: 0.9rem; }
+    .text-link:hover { color: var(--text); }
+
+    .quick-facts {
+      margin-top: 24px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .quick-facts strong { display: block; color: var(--text); margin-bottom: 2px; }
+
+    .profile-panel {
+      justify-self: end;
+      width: min(100%, 255px);
+      text-align: center;
+    }
+
+    .profile-panel img {
+      width: 210px;
+      height: 210px;
+      margin: 0 auto;
+      object-fit: cover;
+      object-position: 50% 34%;
+      border-radius: 50%;
+      border: 4px solid color-mix(in srgb, var(--accent) 55%, var(--panel-solid));
+      box-shadow: var(--shadow);
+      background: var(--panel-solid);
+    }
+
+    .profile-caption {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .profile-caption strong { display: block; color: var(--text); margin-top: 3px; }
+
+    .section { padding: 54px 0; border-bottom: 1px solid var(--line); }
+    .section-muted { background: color-mix(in srgb, var(--bg-soft) 68%, transparent); }
+    .section-grid { display: grid; grid-template-columns: 0.66fr 1.34fr; gap: 58px; align-items: start; }
+    .section-heading h2,
+    .compact-heading h2 { margin-bottom: 11px; font-size: clamp(1.75rem, 3.3vw, 2.65rem); line-height: 1.08; letter-spacing: -0.04em; }
+    .section-body > p { color: var(--muted); margin-bottom: 12px; }
+    .advisor-link { color: var(--text); font-weight: 600; text-underline-offset: 4px; }
+
+    .personal-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+
+    .personal-note strong { display: block; margin-bottom: 3px; }
+    .personal-note p { margin-bottom: 0; color: var(--muted); }
+
+    .tag-list,
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag-list { margin-top: 18px; }
+    .tag-list span,
+    .project-tags span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 0.76rem;
+      white-space: nowrap;
+    }
+
+    .compact-heading {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 0.75fr) minmax(260px, 1fr);
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+
+    .compact-heading > * { margin-bottom: 0; }
+    .compact-heading > p:last-child { color: var(--muted); }
+
+    .card-grid,
+    .project-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .research-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .info-card,
+    .project-card,
+    .publication-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    }
+
+    .info-card { padding: 18px; min-height: 175px; }
+    .card-number { color: var(--accent); font-size: 0.75rem; font-weight: 700; }
+    .info-card h3 { margin: 14px 0 7px; font-size: 1.02rem; line-height: 1.25; }
+    .info-card p { margin-bottom: 0; color: var(--muted); font-size: 0.88rem; }
+
+    .project-card { padding: 20px; display: flex; flex-direction: column; min-height: 260px; }
+    .project-meta { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 0.75rem; }
+    .project-card h3 { margin: 18px 0 8px; font-family: "Source Serif 4", Georgia, serif; font-size: 1.45rem; line-height: 1.12; letter-spacing: -0.025em; }
+    .project-card p { color: var(--muted); font-size: 0.88rem; }
+    .project-tags { margin-top: auto; padding-top: 8px; }
+    .project-links { margin-top: 14px; }
+    .project-links a,
+    .section-footer-link a,
+    .contact-links > a:not(.button) { color: var(--text); font-size: 0.86rem; font-weight: 600; text-underline-offset: 4px; }
+    .section-footer-link { margin-top: 17px; }
+
+    .publication-layout { display: grid; grid-template-columns: 0.65fr 1.35fr; gap: 55px; align-items: center; }
+    .publication-card { padding: 23px; display: grid; grid-template-columns: 118px 1fr; gap: 23px; }
+    .publication-badge { color: var(--accent); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .publication-card h3 { margin-bottom: 7px; font-size: 1.25rem; line-height: 1.3; }
+    .publication-card p { color: var(--muted); margin-bottom: 9px; }
+    .authors { color: var(--text) !important; font-size: 0.88rem; }
+    .award-line span { display: inline-flex; margin-top: 5px; color: var(--accent); font-size: 0.82rem; font-weight: 700; }
+
+    .contact-section { padding: 45px 0; }
+    .contact-layout { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; }
+    .contact-layout h2 { margin-bottom: 7px; font-size: 2rem; letter-spacing: -0.04em; }
+    .contact-layout p { margin-bottom: 0; color: var(--muted); }
+    .contact-links { justify-content: flex-end; max-width: 540px; }
+    .email-row { margin-top: 12px; }
+
+    .footer { padding: 20px 0; color: var(--muted); font-size: 0.78rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; }
+
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.45s ease, transform 0.45s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr 180px; gap: 32px; min-height: auto; padding: 48px 0; }
+      .profile-panel img { width: 165px; height: 165px; }
+      .research-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .compact-heading { grid-template-columns: 1fr; gap: 7px; }
+      .section-grid,
+      .publication-layout { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(calc(100% - 28px), var(--shell)); }
+      .nav-toggle { display: block; margin-left: auto; }
+      .nav-links {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 64px;
+        display: none;
+        margin-left: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--panel-solid);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: grid; }
+      .hero-grid { grid-template-columns: 1fr; text-align: left; padding: 42px 0; }
+      .profile-panel { order: -1; justify-self: start; width: auto; display: flex; align-items: center; gap: 16px; text-align: left; }
+      .profile-panel img { width: 104px; height: 104px; margin: 0; }
+      .profile-caption { margin-top: 0; }
+      h1 { font-size: 3rem; }
+      .quick-facts { grid-template-columns: 1fr; }
+      .project-grid,
+      .research-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: 0; }
+      .publication-card { grid-template-columns: 1fr; gap: 10px; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-links { justify-content: flex-start; }
+      .footer-inner { flex-direction: column; gap: 3px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -60,29 +464,29 @@
 
   <main id="main">
     <section class="hero">
-      <canvas id="network-canvas" aria-hidden="true"></canvas>
       <div class="shell hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow">Ph.D. Student in Data Science · NJIT</p>
           <h1>Atieh Barati Nia</h1>
           <p class="hero-title">Graph Algorithms · High-Performance Computing · Dynamic Graph Analytics</p>
           <p class="hero-summary">
-            I design and evaluate efficient graph algorithms, with an emphasis on runtime, memory use,
-            dynamic workloads, and reproducible systems research.
+            I design and evaluate efficient graph algorithms, with current work on parallel triangle counting
+            in large-scale graphs, dynamic graph analytics, and performance-aware scientific software.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#research">Research</a>
             <a class="button button-secondary" href="https://github.com/AtiehBaratinia" target="_blank" rel="noreferrer">GitHub ↗</a>
             <a class="text-link" href="mailto:ab2763@njit.edu">ab2763@njit.edu</a>
+            <a class="text-link" href="mailto:atiehbaratinia@gmail.com">atiehbaratinia@gmail.com</a>
           </div>
           <div class="quick-facts" aria-label="Research highlights">
-            <span><strong>Current focus</strong> Scalable graph analytics</span>
+            <span><strong>Current focus</strong> Parallel and dynamic triangle counting at scale</span>
             <span><strong>Recognition</strong> IEEE HPEC 2025 Outstanding Student Paper</span>
           </div>
         </div>
 
         <div class="profile-panel reveal" data-delay="80">
-          <img src="profile.jpg" alt="Portrait of Atieh Barati Nia" width="520" height="620" />
+          <img src="profile.jpg" alt="Portrait of Atieh Barati Nia" width="420" height="420" />
           <div class="profile-caption">
             <span>Research areas</span>
             <strong>Graphs · Systems · AI-assisted software</strong>
@@ -100,25 +504,25 @@
         <div class="section-body reveal" data-delay="60">
           <p>
             I am a Ph.D. student in Data Science at the New Jersey Institute of Technology, advised by
-            Prof. David A. Bader. My work focuses on efficient graph algorithms, dynamic graph analytics,
-            and performance engineering for scientific software.
+            <a class="advisor-link" href="https://davidbader.net/" target="_blank" rel="noreferrer">Prof. David A. Bader</a>.
+            My research focuses on scalable graph algorithms, parallel and batch-dynamic triangle counting,
+            dynamic graph analytics, and performance engineering for scientific software.
           </p>
           <p>
-            I study the implementation details that determine real performance: data layout, memory traffic,
-            cache behavior, scalability, and rigorous experimental evaluation. I also investigate how modern
+            I study the implementation details that shape real performance, including data layout, memory traffic,
+            cache behavior, parallel scalability, and rigorous experimental evaluation. I also investigate how modern
             language models generate and optimize low-level graph code.
           </p>
           <div class="personal-note">
             <strong>Beyond research</strong>
             <p>
-              I love board games, solving mysteries, and traveling. Just as I enjoy technical challenges and
-              learning new ideas, I also like trying unfamiliar activities, exploring new places, and taking on
-              something new for fun.
+              I love board games, solving mysteries, and traveling. Just as I enjoy technical challenges and learning
+              new ideas, I also like trying unfamiliar activities, exploring new places, and taking on something new for fun.
             </p>
           </div>
           <div class="tag-list" aria-label="Research skills">
-            <span>Graph Algorithms</span><span>HPC</span><span>Dynamic Graphs</span><span>Subgraph Counting</span>
-            <span>C / C++</span><span>Python</span><span>OpenMP</span><span>Performance Engineering</span>
+            <span>Graph Algorithms</span><span>Parallel Triangle Counting</span><span>HPC</span><span>Dynamic Graphs</span>
+            <span>Subgraph Counting</span><span>C / C++</span><span>Python</span><span>OpenMP</span><span>Performance Engineering</span>
           </div>
         </div>
       </div>
@@ -129,24 +533,29 @@
         <div class="section-heading compact-heading reveal">
           <p class="section-label">Research</p>
           <h2>Current directions</h2>
-          <p>Algorithm design, systems implementation, and empirical evaluation for large graph workloads.</p>
+          <p>Algorithm design, parallel implementation, and empirical evaluation for large graph workloads.</p>
         </div>
 
         <div class="card-grid research-grid">
           <article class="info-card reveal">
             <span class="card-number">01</span>
-            <h3>Dynamic Graph Analytics</h3>
-            <p>Efficiently maintaining graph statistics as edges arrive, change, or disappear.</p>
+            <h3>Parallel Triangle Counting</h3>
+            <p>Designing scalable algorithms for counting triangles and related subgraph patterns in large-scale graphs.</p>
           </article>
-          <article class="info-card reveal" data-delay="50">
+          <article class="info-card reveal" data-delay="40">
             <span class="card-number">02</span>
-            <h3>Performance Engineering</h3>
-            <p>Optimizing graph software for runtime, memory use, cache behavior, and scale.</p>
+            <h3>Dynamic Graph Analytics</h3>
+            <p>Maintaining graph statistics efficiently as edges arrive, change, or disappear.</p>
           </article>
-          <article class="info-card reveal" data-delay="100">
+          <article class="info-card reveal" data-delay="80">
             <span class="card-number">03</span>
+            <h3>Performance Engineering</h3>
+            <p>Optimizing graph software for runtime, memory use, cache behavior, and parallel scale.</p>
+          </article>
+          <article class="info-card reveal" data-delay="120">
+            <span class="card-number">04</span>
             <h3>AI for Efficient Software</h3>
-            <p>Evaluating whether language models can produce correct and efficient systems code.</p>
+            <p>Evaluating whether language models can generate correct and efficient systems code.</p>
           </article>
         </div>
       </div>
@@ -161,8 +570,8 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card reveal" data-repo="LLMGeneratedCode">
-            <div class="project-meta"><span>Research benchmark</span><span>C · <b data-stars>—</b> stars</span></div>
+          <article class="project-card reveal">
+            <div class="project-meta"><span>Research benchmark</span><span>C</span></div>
             <h3>LLM-Generated Code for Graph Analysis</h3>
             <p>Evaluating generated C code across compilability, correctness, runtime, memory footprint, and integration readiness.</p>
             <div class="project-tags"><span>C</span><span>CSR</span><span>Benchmarking</span><span>HPC</span></div>
@@ -172,24 +581,24 @@
             </div>
           </article>
 
-          <article class="project-card reveal" data-delay="40" data-repo="RAG_TGN">
-            <div class="project-meta"><span>Graph learning</span><span>Python · <b data-stars>—</b> stars</span></div>
+          <article class="project-card reveal" data-delay="40">
+            <div class="project-meta"><span>Graph learning</span><span>Python</span></div>
             <h3>RAG + Temporal Graph Networks</h3>
             <p>Combining retrieval-augmented generation with temporal graph learning for evolving graph data.</p>
             <div class="project-tags"><span>Python</span><span>GNN</span><span>RAG</span></div>
             <div class="project-links"><a href="https://github.com/AtiehBaratinia/RAG_TGN" target="_blank" rel="noreferrer">Repository ↗</a></div>
           </article>
 
-          <article class="project-card reveal" data-delay="80" data-repo="Fraud-Detection-Deep-Learning">
-            <div class="project-meta"><span>Deep learning</span><span>Notebook · <b data-stars>—</b> stars</span></div>
+          <article class="project-card reveal" data-delay="80">
+            <div class="project-meta"><span>Deep learning</span><span>Notebook</span></div>
             <h3>Fraud Detection with Deep Models</h3>
             <p>Comparing permutation-invariant and transformer-based tabular models with XGBoost.</p>
             <div class="project-tags"><span>Deep Sets</span><span>FT-Transformer</span><span>XGBoost</span></div>
             <div class="project-links"><a href="https://github.com/AtiehBaratinia/Fraud-Detection-Deep-Learning" target="_blank" rel="noreferrer">Repository ↗</a></div>
           </article>
 
-          <article class="project-card reveal" data-delay="120" data-repo="hate-speech-text-representations">
-            <div class="project-meta"><span>NLP</span><span>Notebook · <b data-stars>—</b> stars</span></div>
+          <article class="project-card reveal" data-delay="120">
+            <div class="project-meta"><span>NLP</span><span>Notebook</span></div>
             <h3>Hate-Speech Text Representations</h3>
             <p>Comparing TF-IDF, Word2Vec, and fine-tuned BERT for hate-speech detection.</p>
             <div class="project-tags"><span>BERT</span><span>Word2Vec</span><span>TF-IDF</span></div>
@@ -231,6 +640,10 @@
           <p class="section-label">Contact</p>
           <h2>Research and collaboration</h2>
           <p>For questions about my work or potential collaboration, please get in touch.</p>
+          <div class="email-row">
+            <a class="text-link" href="mailto:ab2763@njit.edu">ab2763@njit.edu</a>
+            <a class="text-link" href="mailto:atiehbaratinia@gmail.com">atiehbaratinia@gmail.com</a>
+          </div>
         </div>
         <div class="contact-links">
           <a class="button button-primary" href="mailto:ab2763@njit.edu">Email me</a>
@@ -248,5 +661,46 @@
       <span>Ph.D. Student · Data Science · NJIT</span>
     </div>
   </footer>
+
+  <script>
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
+
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', root.dataset.theme);
+    });
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = document.querySelectorAll('.reveal');
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      items.forEach(item => item.classList.add('visible'));
+    } else {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = Number(entry.target.dataset.delay || 0);
+            setTimeout(() => entry.target.classList.add('visible'), delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      items.forEach(item => observer.observe(item));
+    }
+  </script>
 </body>
 </html>
