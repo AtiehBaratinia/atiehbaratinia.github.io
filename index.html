@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Atieh Barati Nia — Ph.D. researcher in graph algorithms, high-performance computing, and efficient AI-assisted software at NJIT." />
+  <meta name="author" content="Atieh Barati Nia" />
+  <meta name="theme-color" content="#07111f" />
+
+  <meta property="og:title" content="Atieh Barati Nia — Graph Algorithms & HPC" />
+  <meta property="og:description" content="Research portfolio of Atieh Barati Nia, a Data Science Ph.D. researcher at NJIT." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atiehbaratinia.github.io/" />
+  <meta property="og:image" content="https://atiehbaratinia.github.io/profile.jpg" />
+
+  <title>Atieh Barati Nia | Graph Algorithms & HPC</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Atieh Barati Nia home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <circle cx="11" cy="24" r="4" />
+            <circle cx="25" cy="10" r="4" />
+            <circle cx="37" cy="26" r="4" />
+            <circle cx="24" cy="38" r="4" />
+            <path d="M14 21 22 13M29 12l6 10M34 29l-7 6M20 36l-7-9M15 24h18" />
+          </svg>
+        </span>
+        <span>Atieh<span class="accent-dot">.</span></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#publication">Publication</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.2 8.2 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <canvas id="network-canvas" aria-hidden="true"></canvas>
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="status-dot"></span> Data Science Ph.D. Researcher · NJIT</div>
+          <h1>I build algorithms for graphs that refuse to stay <span class="gradient-text">small.</span></h1>
+          <p class="hero-lede">
+            I’m <strong>Atieh Barati Nia</strong>, working at the intersection of
+            <span class="rotating-word" aria-live="polite">graph algorithms</span>, high-performance computing,
+            and efficient AI-assisted software.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary magnetic" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost magnetic" href="https://github.com/AtiehBaratinia" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-links" aria-label="Professional profiles">
+            <a href="https://www.linkedin.com/in/atiehbaratinia/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <span>·</span>
+            <a href="https://scholar.google.com/citations?hl=en&user=IbT5v3kAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
+            <span>·</span>
+            <a href="mailto:ab2763@njit.edu">Email</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" data-delay="120">
+          <div class="profile-ring">
+            <div class="ring ring-one"></div>
+            <div class="ring ring-two"></div>
+            <div class="profile-card glass-card">
+              <div class="profile-image-wrap">
+                <img src="profile.jpg" alt="Portrait of Atieh Barati Nia" width="600" height="600" />
+              </div>
+              <div class="profile-meta">
+                <div>
+                  <span class="label">Current focus</span>
+                  <strong>Scalable Graph Analytics</strong>
+                </div>
+                <span class="live-indicator" title="Active research" aria-label="Active research"></span>
+              </div>
+            </div>
+            <div class="floating-chip chip-c">C / C++</div>
+            <div class="floating-chip chip-graph">Graph Analytics</div>
+            <div class="floating-chip chip-hpc">HPC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell hero-stats reveal" data-delay="200">
+        <article>
+          <strong>IEEE HPEC ’25</strong>
+          <span>Outstanding Student Paper Award</span>
+        </article>
+        <article>
+          <strong id="repo-count">36</strong>
+          <span>Public GitHub repositories</span>
+        </article>
+        <article>
+          <strong>Runtime + Memory</strong>
+          <span>Performance measured beyond correctness</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="shell two-column">
+        <div class="section-heading reveal">
+          <span class="kicker">01 / About</span>
+          <h2>Making large-scale computation <span class="outline-text">practical.</span></h2>
+        </div>
+        <div class="about-copy reveal" data-delay="100">
+          <p class="large-copy">
+            I am a Ph.D. student in Data Science at the New Jersey Institute of Technology, advised by
+            Prof. David A. Bader. My research centers on efficient graph algorithms, dynamic graph analytics,
+            and performance engineering for scientific software.
+          </p>
+          <p>
+            I care about the details that determine whether an algorithm is useful in practice: data layout,
+            memory traffic, cache behavior, scalability, and reproducible evaluation. My recent work also studies
+            how frontier language models generate and optimize low-level graph code.
+          </p>
+          <div class="skill-cloud" aria-label="Areas of expertise">
+            <span>Graph Algorithms</span><span>High-Performance Computing</span><span>C</span><span>Python</span>
+            <span>Dynamic Graphs</span><span>Subgraph Counting</span><span>OpenMP</span><span>Performance Engineering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research" id="research">
+      <div class="shell">
+        <div class="section-heading centered reveal">
+          <span class="kicker">02 / Research directions</span>
+          <h2>From graph structure to <span class="gradient-text">system performance.</span></h2>
+          <p>Research themes that connect algorithm design, efficient implementation, and empirical evaluation.</p>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card reveal tilt-card">
+            <div class="card-index">01</div>
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="12" cy="15" r="4"/><circle cx="35" cy="12" r="4"/><circle cx="37" cy="35" r="4"/><circle cx="14" cy="36" r="4"/><path d="m16 14 15-1M34 16l2 15M33 36l-15 1M13 32l-1-13M16 18l17 14M32 16 18 33"/></svg>
+            </div>
+            <h3>Dynamic Graph Analytics</h3>
+            <p>Algorithms and data structures that update graph statistics efficiently as edges arrive, change, or disappear.</p>
+            <span class="card-tag">Evolving networks</span>
+          </article>
+
+          <article class="research-card reveal tilt-card" data-delay="80">
+            <div class="card-index">02</div>
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 35h7V22H8zM20 35h7V12h-7zM32 35h7V17h-7z"/><path d="M6 40h36M10 17l11-8 10 4 9-9"/></svg>
+            </div>
+            <h3>Performance Engineering</h3>
+            <p>Turning algorithmic ideas into fast, memory-conscious implementations through careful measurement and optimization.</p>
+            <span class="card-tag">Runtime · Memory · Scale</span>
+          </article>
+
+          <article class="research-card reveal tilt-card" data-delay="160">
+            <div class="card-index">03</div>
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="9" y="9" width="30" height="30" rx="7"/><path d="M18 20h12M18 28h8M16 5v4M24 5v4M32 5v4M16 39v4M24 39v4M32 39v4M5 16h4M5 24h4M5 32h4M39 16h4M39 24h4M39 32h4"/></svg>
+            </div>
+            <h3>AI for Efficient Software</h3>
+            <p>Evaluating whether language models can produce correct, efficient, and integration-ready systems code.</p>
+            <span class="card-tag">LLMs × Systems</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <span class="kicker">03 / Selected projects</span>
+          <h2>Code, experiments, and <span class="outline-text">open questions.</span></h2>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card featured reveal" data-repo="LLMGeneratedCode">
+            <div class="project-number">01</div>
+            <div class="project-content">
+              <div class="project-topline"><span>Research benchmark</span><span class="repo-meta">C · <b data-stars>—</b> stars</span></div>
+              <h3>LLM-Generated Code for Graph Analysis</h3>
+              <p>A reproducible collection of C implementations generated by frontier language models, used to evaluate compilability, correctness, runtime, memory footprint, and ready-to-use capability.</p>
+              <div class="project-tech"><span>C</span><span>CSR graphs</span><span>Benchmarking</span><span>HPC</span></div>
+              <div class="project-actions">
+                <a href="https://github.com/AtiehBaratinia/LLMGeneratedCode" target="_blank" rel="noreferrer">View repository ↗</a>
+                <a href="https://arxiv.org/abs/2507.06463" target="_blank" rel="noreferrer">Read paper ↗</a>
+              </div>
+            </div>
+            <div class="project-art graph-art" aria-hidden="true">
+              <svg viewBox="0 0 420 280">
+                <defs><linearGradient id="lineGradient" x1="0" x2="1"><stop stop-color="currentColor" stop-opacity=".15"/><stop offset="1" stop-color="currentColor" stop-opacity=".9"/></linearGradient></defs>
+                <g class="art-lines"><path d="M36 194 108 80l73 110 72-139 90 121"/><path d="M36 194 181 190 343 172M108 80l145-29M181 190l72-139"/><path d="m108 80 235 92"/></g>
+                <g class="art-nodes"><circle cx="36" cy="194" r="13"/><circle cx="108" cy="80" r="17"/><circle cx="181" cy="190" r="11"/><circle cx="253" cy="51" r="14"/><circle cx="343" cy="172" r="18"/></g>
+                <g class="code-lines"><rect x="72" y="228" width="220" height="5" rx="2"/><rect x="72" y="242" width="155" height="5" rx="2"/><rect x="72" y="256" width="188" height="5" rx="2"/></g>
+              </svg>
+            </div>
+          </article>
+
+          <div class="project-grid">
+            <article class="project-card compact reveal tilt-card" data-repo="RAG_TGN">
+              <div class="project-number">02</div>
+              <div class="project-topline"><span>Graph learning</span><span class="repo-meta">Python · <b data-stars>—</b> stars</span></div>
+              <h3>RAG + Temporal Graph Networks</h3>
+              <p>Integrating retrieval-augmented generation with a temporal graph network to improve prediction accuracy on evolving graph data.</p>
+              <div class="project-tech"><span>Python</span><span>GNN</span><span>RAG</span></div>
+              <a class="arrow-link" href="https://github.com/AtiehBaratinia/RAG_TGN" target="_blank" rel="noreferrer" aria-label="View RAG TGN repository">↗</a>
+            </article>
+
+            <article class="project-card compact reveal tilt-card" data-delay="80" data-repo="Fraud-Detection-Deep-Learning">
+              <div class="project-number">03</div>
+              <div class="project-topline"><span>Deep learning</span><span class="repo-meta">Notebook · <b data-stars>—</b> stars</span></div>
+              <h3>Fraud Detection with Deep Models</h3>
+              <p>Benchmarking permutation-invariant and transformer-based tabular models against XGBoost on imbalanced insurance claims.</p>
+              <div class="project-tech"><span>Deep Sets</span><span>FT-Transformer</span><span>XGBoost</span></div>
+              <a class="arrow-link" href="https://github.com/AtiehBaratinia/Fraud-Detection-Deep-Learning" target="_blank" rel="noreferrer" aria-label="View fraud detection repository">↗</a>
+            </article>
+
+            <article class="project-card compact reveal tilt-card" data-delay="160" data-repo="hate-speech-text-representations">
+              <div class="project-number">04</div>
+              <div class="project-topline"><span>NLP</span><span class="repo-meta">Notebook · <b data-stars>—</b> stars</span></div>
+              <h3>Hate-Speech Text Representations</h3>
+              <p>Comparing TF-IDF, Word2Vec, and fine-tuned BERT for hate-speech detection on a public Twitter dataset.</p>
+              <div class="project-tech"><span>BERT</span><span>Word2Vec</span><span>TF-IDF</span></div>
+              <a class="arrow-link" href="https://github.com/AtiehBaratinia/hate-speech-text-representations" target="_blank" rel="noreferrer" aria-label="View hate speech project repository">↗</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="all-work reveal">
+          <p>More experiments, coursework, and graph projects live on GitHub.</p>
+          <a class="button button-ghost magnetic" href="https://github.com/AtiehBaratinia?tab=repositories" target="_blank" rel="noreferrer">Browse all repositories ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section publication" id="publication">
+      <div class="shell publication-grid">
+        <div class="award-visual reveal" aria-hidden="true">
+          <div class="award-rays"></div>
+          <div class="award-medal">
+            <span>HPEC</span>
+            <strong>2025</strong>
+          </div>
+          <div class="award-caption">Outstanding<br/>Student Paper</div>
+        </div>
+
+        <div class="publication-copy reveal" data-delay="100">
+          <span class="kicker">04 / Featured publication</span>
+          <h2>Evaluating Efficiency and Novelty of LLM-Generated Code for Graph Analysis</h2>
+          <p class="authors">Atieh Barati Nia · Mohammad Dindoost · David A. Bader</p>
+          <p>
+            A systematic study of modern language models generating efficient C implementations for graph-analysis routines,
+            evaluated across compilability, correctness, execution time, and memory footprint.
+          </p>
+          <div class="publication-facts">
+            <span><b>Venue</b> IEEE HPEC 2025</span>
+            <span><b>Recognition</b> Outstanding Student Paper Award</span>
+          </div>
+          <div class="publication-actions">
+            <a class="button button-primary magnetic" href="https://arxiv.org/abs/2507.06463" target="_blank" rel="noreferrer">Read the paper ↗</a>
+            <a class="text-link" href="https://github.com/AtiehBaratinia/LLMGeneratedCode" target="_blank" rel="noreferrer">Explore the code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-section">
+      <div class="shell">
+        <div class="section-heading centered reveal">
+          <span class="kicker">05 / Path</span>
+          <h2>Research built one <span class="gradient-text">edge</span> at a time.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-year">2025 — present</span>
+            <div><h3>Ph.D. in Data Science · NJIT</h3><p>Research in graph algorithms and high-performance computing under Prof. David A. Bader.</p></div>
+          </article>
+          <article class="timeline-item reveal" data-delay="80">
+            <span class="timeline-year">2025</span>
+            <div><h3>IEEE HPEC Outstanding Student Paper</h3><p>Recognized for research evaluating the efficiency and novelty of LLM-generated graph-analysis code.</p></div>
+          </article>
+          <article class="timeline-item reveal" data-delay="160">
+            <span class="timeline-year">2022</span>
+            <div><h3>B.Sc. in Computer Science</h3><p>Amirkabir University of Technology, with foundations in algorithms, data science, and software systems.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="shell contact-card reveal">
+        <div class="contact-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        <span class="kicker">06 / Contact</span>
+        <h2>Let’s connect the <span class="gradient-text">dots.</span></h2>
+        <p>For research conversations, collaboration, or questions about my work, send me a message.</p>
+        <div class="contact-actions">
+          <a class="button button-primary magnetic" href="mailto:ab2763@njit.edu">ab2763@njit.edu ↗</a>
+          <button class="button button-ghost copy-email" type="button" data-email="ab2763@njit.edu">Copy email</button>
+        </div>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/atiehbaratinia/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/AtiehBaratinia" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=IbT5v3kAAAAJ" target="_blank" rel="noreferrer">Google Scholar ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#top"><span>Atieh<span class="accent-dot">.</span></span></a>
+      <p>Designed around graphs, performance, and curiosity.</p>
+      <p>© <span id="current-year"></span> Atieh Barati Nia</p>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite">Email copied</div>
+</body>
+</html>
